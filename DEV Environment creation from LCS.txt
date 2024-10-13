@@ -1,0 +1,20 @@
+--Create a DEV Environment
+1.Go to LCS create an account to an existing project or create a new project.
+2.Go to All Projects -> + button -> Migrate,create solution and learn -> Create a project fill in the details
+3.Environment in LCS
+ 1.Green color highlighted indicated PROD environment of microsoft and we can only access front end not the backend.
+ 2.Cloud hosted environments
+
+4.Go to Asset Library -> Downloadable VHD(9)
+5.Download all the FinandOps VHD Parts and store it in a C Folder
+6.Download the exe file from the folder you have stored.
+7.It will combine all the parts of the rar files and store it in a single VHD.
+8.Go to start -> Type Turn Windows feature on or off -> Enable HyperV
+9.Go to start -> Type Hyper-V Manager -> Click new under actions select Virtual Machine.
+10.In the Assign Memory Tab atleast select 12GB ROM
+11.Under Configure Network Tab select Default one
+12.In Connect Virtual Hard disk make sure to select the VHD folder you zipped.
+13.Connect the VM and password is pass@word1
+14.Run the AdminUserProvisioning Tool as adminstrator.(Azure Active directory email address to access the front end application)
+15.Go to IIS -> AOS Service -> Click on the instance -> Login using your email 
+16.Go to services->Enable the batch process.

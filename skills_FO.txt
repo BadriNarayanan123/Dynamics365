@@ -1,0 +1,30 @@
+--Skills to learn as D365FO Technical Developer
+1.Experience with D365FO interfacing and integration.
+2.Proficiency in X++, Data Management (DIXF), SSRS, Security Framework
+3.Proficiency in Microsoft Dynamics 365 F&O development tools, including X++ programming language.
+4.Strong understanding of object-oriented programming (OOP) concepts and design patterns.
+5.Experience with Microsoft Visual Studio and development environments for Dynamics 365 F&O.
+6.Knowledge of web technologies like HTML, CSS, JavaScript, and frameworks such as ASP.NET.
+7.Familiarity with Microsoft SQL Server and SQL scripting for data manipulation and reporting.
+8.Understanding of integrations and data exchange mechanisms, such as Data Entities, OData, and Web Services.
+9.Knowledge of version control systems like Git and source code management best practices.
+10.Understanding of cloud technologies and deployment models, such as Microsoft Azure.
+11.Good understanding of delivery process and delivery tools like Azure DevOps and be able to adopt the tools and processes for successful delivery.
+12.Strong in x++ language
+13.Good experience in SQL server scripting
+14.Familiar with models, COCs, Extensions
+15.Hands-on experience in LCS.
+16.Manual and DevOps deployment skills
+17.APIs - Business Events, DMF API, Recurring API, Custom Services, and OData.
+18.Strong 6+ years of D365 F&O technical design and development experience – X++, SSRS and BI Reports development (advantage would be experience in AX 2012)
+19.BSc in Computer Science or equivalent qualification
+20.Managed a minimum of 3-4 Microsoft full life cycle AX2012, Dynamics 365 CE or F&O implementations projects
+21.Producing design and project documentation
+22.Managing projects and/or teams in the delivery of Microsoft Dynamics oriented projects
+23.Azure knowledge and experience working with and managing cloud environments
+24.Knowledge of SQL & OData
+25.Extensive experience in finance and accounting (ERP)
+26.Skills and knowledge in DevOps (Project, Branches, Pipelines, Releases)
+27.Knowledge and experience in LCS (Update, upgrade, refresh DB, Project onboarding)
+28.Experience in upgrading from AX2012 to latest releases of Dynamics 365
+29.1+ years experience with API and RESTful/OData Web services

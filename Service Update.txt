@@ -1,0 +1,5 @@
+--Quality or Service Update
+1.Go to LCS ManageEnvironment->Apply updates and save it in the Asset Library.
+2.After that you can apply this update to any environment.Downloading update is a one time process 
+in a particular environment you are in.
+3.Go to Environment page->Maintain->Apply updates

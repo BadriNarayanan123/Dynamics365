@@ -1,0 +1,21 @@
+--Dev Server Deployment
+1.Go to LCS Home Page and click on '+' button above environment section or go to cloud-hosted environment
+  under the hamburger sign to create an environment(DEV or Build).
+
+2.To connect VS with DevOps Project
+  1.Go to VS -> Team Explorer -> Manage Connections -> Add -> Paste the URL of the organisation of DevOps
+  2.It will list all the organisations under the Microsoft account used to login for Visual Studio
+  
+3.Branch in devops i.e Trunk->Main->Metadata and Projects.
+  
+3.To know more on branching use this link
+https://ariste.info/en/2020/06/how-do-we-do-branching-in-dynamics-365/
+
+4. More on Tier Environments refer this link
+https://community.dynamics.com/forums/thread/details/?threadid=e6151c6e-df77-4766-90f1-27abe8ec742f
+https://community.dynamics.com/blogs/post/?postid=b776a7db-e62a-4a2b-acb0-66b97032bf92
+
+5.During Compiling it converts x++ code into CIL(Common Intermediary Language) which the compiler understands.
+
+--How to create a free Dev Environment.
+https://anithasantosh.wordpress.com/2023/07/17/free-access-to-a-d365fo-environmentwith-dev-box/

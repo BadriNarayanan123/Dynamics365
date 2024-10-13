@@ -1,0 +1,4 @@
+How to resolve the status in Devops.
+1.If it is a development task then close the status and leave it in your name.
+2.If it is a bug resolve it and assign it to the functional person.
+3.In both cases resolve the user story if incase it is attached to the bug or development

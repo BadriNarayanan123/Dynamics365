@@ -1,0 +1,9 @@
+--To Deploy a Package
+1.Go to LCS -> Asset Library -> Software Deployable Package.
+2.Go to Cloud-hosted environment and apply the package.
+3.Go to Full Details -> Maintain -> Apply updates
+
+--Install Package from the command Line
+1.Go to Cmd(Administrator) and go to Package folder which is installed(Preferably in C Drive)
+2.When you move a new model to Package Local Directory make sure to refresh models from
+ Dynamics 365 -> model management -> Refresh models.

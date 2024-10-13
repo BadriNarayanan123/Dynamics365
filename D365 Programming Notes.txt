@@ -1,0 +1,218 @@
+Fetching records from a particular table in SQL
+
+select * from dbo.DOCUREF where REFCOMPANYID = 'USSI'
+select * from dbo.PMIPBillingScheduleTable where DATAAREAID = 'USSI'
+
+------------------------------------------------------------------------
+        
+Joining two Tables based on their relation and particular condition
+    
+join tsTimesheetLine
+where tsTimesheetLine.RecId == tsTimesheetLineWeek.TSTimesheetLine 
+&& tsTimesheetLine.PMIPIsOvertime == NoYes::Yes;
+------------------------------------------------------------------------
+Fetching record in form for a particular choosen record
+cust_ds.cursor();
+------------------------------------------------------------------------
+
+Fetching datasource in a form using form run
+
+ FormDataSource fds = this;
+ FormDataSource fdsSalesLineGen = fds.formRun().dataSource(formDataSourceStr(TsTimesheetEntry,TSTimesheetLineWeek));
+ fdsSalesLineGen.observe();
+
+------------------------------------------------------------------------
+
+how to select form control(menu button)
+this.formRun().design().controlName(formControlStr(PMIPBillingScheduleListPage,BillingScheduleStatus)).enabled(false);
+
+------------------------------------------------------------------------
+
+How to get number of selected rows in a grid in a form.
+InventTable_ds.recordsMarked().lastIndex()
+------------------------------------------------------------------------
+How to get total row count on a grid
+InventTable_ds.numberOfRowsLoaded();
+
+------------------------------------------------------------------------
+How to use FormRun : 
+ FormRun  formRun  = sender.formRun();
+ FormDataSource  YourTempTable_ds = formRun.dataSource(tableStr(TSTimesheetTable));
+ TSTimesheetTable tsTimesheetTable =YourTempTable_ds.cursor();
+
+------------------------------------------------------------------------
+How to call parent form datasource from called form
+      FormDataSource  ds;
+      ds = element.args().record().dataSource();
+      ds.research(true);
+      ds.refresh();
+------------------------------------------------------------------------
+How to call form datasource which is not bound to the menu item
+
+      Object callerForm = element.args().caller();
+      PSAProjSchedRole projSchedRole = callerForm.datasource("PSAProjSchedRole").cursor();
+
+-------------------------------------------------------------------------
+
+How to give admin access to hso account for instance login
+1.Go to C:\AOSService\PackagesLocalDirectory\bin
+2.Go to AdminUserProvisioning.Exe and give your HSO Emailid.
+
+-------------------------------------------------------------------------
+How to set value for combo Box Control
+Beside modify metadata on form properties, as best practice we can use code like below to assign default value for combobox.
+
+You can use this code in the form’s init method after super():
+ComboBoxName.selection(ComboBoxName::DefaultValue);
+
+If this is a table field we should you best practice overriding the initValue method in the table:
+this.ComboBoxName = ComboBoxName::DefaultValue;
+
+Override initValue in the form’s datasource only if it should be a specific behaviour in this form only.
+
+--------------------------------------------------------------------------
+
+If you get a Sync Error and you get data sync failed then perform these 2 steps in command line
+1.sc queryex DynamicsAxBatch
+2.taskkill /f /pid "PID"
+
+--------------------------------------------------------------------------
+
+Data Import/Export Issues
+Run the azure emulator and perform these steps
+1.C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator>AzureStorageEmulator.exe start
+2.C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator>AzureStorageEmulator.exe status
+3.C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator>AzureStorageEmulator.exe init
+4.C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator>AzureStorageEmulator.exe start
+5.C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator>AzureStorageEmulator.exe INIT
+6.C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator>AzureStorageEmulator.exe help
+Windows Azure Storage Emulator 5.10.0.0 command line tool
+Usage:
+    AzureStorageEmulator.exe init            : Initialize the emulator database and configuration.
+    AzureStorageEmulator.exe start           : Start the emulator.
+    AzureStorageEmulator.exe stop            : Stop the emulator.
+    AzureStorageEmulator.exe status          : Get current emulator status.
+    AzureStorageEmulator.exe clear           : Delete all data in the emulator.
+    AzureStorageEmulator.exe help [command]  : Show general or command-specific help.
+
+
+--------------------------------------------------------------------------
+How to translate labels to other languages using the LCS tool
+1.First select en-US label file from each of the models that required to be changed.
+2.Select all the en-US files and zip it to a folder.
+3.Go to LCS->Translation Service and select the source language as English and choose the translation languages.
+4.Translation languages can be found in Devops -> Overview -> Wiki -> Translation available.
+5.After this step in LCS choose the zipped folder and click on submit.
+6.The label files will be translated to the selected languages and then download it as a zip file.
+7.Copy each of the label files(Which is of Particular language) to the corresponding models in AOS service.
+
+
+--------------------------------------------------------------------------
+--- X++ code for implementing the CoC we must know some rules
+The name of the class you created for implementing the Chain of command must end with the _Extension keyword. In our example the class is SalesLine_Extension 
+Must add the attribute [ExtensioOf(TableStr(<name of the Base Class>))]
+The classes must start with public access modifier.
+The keyword "final" needs to be used in the class.
+The extension method name should be exactly the same as it appears in the Base Class.
+The base class method must be called inside your extension method and the method name call using the next keyword. Var v= next methodName();
+
+--------------------------------------------------------------------------
+ExtensionOf(formStr(VendOpenTrans))]
+final class NW_AIA_VendOpenTrans_extension 
+{
+   
+    [PostHandlerFor(formStr(VendOpenTrans), formMethodStr(VendOpenTrans, closeOk))]
+    public static void VendOpenTrans_Post_closeOk(XppPrePostArgs args)
+    {
+        FormRun             element    = args.getThis();
+        FormRun             callerForm = element.args().caller();
+        
+        str                 callerFormName;
+ 
+        callerFormName = element.args().caller().name();
+ 
+        info(callerFormName);
+    }
+}
+---------------------------------------------------------------------------
+Creating a Line Break Within an SSRS Expression
+When you need to include a line break within a textbox in SQL Server Reporting Services, a predefined Visual Basic constant may be used.  The vbcrlf, Visual Basic Carriage Return Line Feed, handles this quite nicely within an SSRS expression.
+=First(Fields!VendName.Value, "PurchPurchaseOrderDS") & VbCRLF & First(Fields!VendAddress.Value, "PurchPurchaseOrderDS")
+=Format(Now, "dd/MM/yyyy") & vbCrLf & Format(Now, "hh:mm tt")
+---------------------------------------------------------------------------
+Important point in SSRS report expression
+
+The entire expression needs to start with =, otherwise you don't have an expression. That is why you are seeing output identical to what you typed as your "expression". When you don't start with =, it does not know that you intended for that to be an expression, it thinks you just want exactly what you typed to be displayed, similar to something like Excel. You will also need to remove the = just prior to Fields!CLD_line_number.Value
+
+This should get you what you're looking for:
+
+="Line: " + CStr(Fields!CLD_line_number.Value)
+----------------------------------------------------------------------------
+How to use date and time format in ssrs reports(Expression)
+=Format(CDate(Field Value),"hh:mm:ss tt") -- Timezone 8:00:00 AM
+=Format(Fields!TimeCardDate.Value,"MM/dd//yyyy")
+----------------------------------------------------------------------------
+Static Query
+Whenever we use groupby in the parent datasource in query we need to use aggregate function like sum,avg etc in the child datasource of that query.
+Status propery in Range field of the Query(It is Values Locked(Meaning value cant be changed),Open(Range value can be changed),Hidden(User cannot see the range but can add value to the query).
+Dynamic Query
+We use the Query Object model which contains Query classes to define Query through code.
+--How to use Static Query created through code
+Query q = new Query(queryStr("Static Query Name"));
+QueryRun qr = new QueryRun(q);
+while(qr.next())
+{
+	Tablename TableBuffer = qr.get(tableNum(tableName));
+}
+
+For QueryBuildRange if we write qbr.value(>=1000) By default the operator is "=="
+
+If we declare a seperate querybuildrange variable then add a datasource,range and a value the overall result of expression will get "AND" with the already existing query expression.
+----------------------------------------------------------------------------
+
+Report Data Provider Class
+RDP class is mandatory.Contract and controller class are optional
+Controller class is used to control the run time logic of dialog form before the logic is processed.
+When dialog form opens we can change destination to email,file.
+getReport method sets the data from temp table created in the processReport method
+Controls added in the report design is available from toolbox bar.
+-----------------------------------------------------------------------------
+Adding Groups to report design table(Details items approach)
+1.Right click on details tab in the row group in the bottom panel of the design.
+2.Select parent group and choose the field you want to group up and click on add group header and group footer.
+
+--Using the groups first approach.
+1.Right click on the details tab in the row group and click on group properties.
+2.Add groupon based on field.
+3.Now we have to include details items
+4.Right click on details tab and a child group with show detailed data checked.
+
+-----------------------------------------------------------------------------
+SQL query to retrieve column names from table2 which does not exist in table1
+SELECT column_name
+FROM information_schema.columns
+WHERE table_name = 'table2' AND column_name NOT IN (
+    SELECT column_name
+    FROM information_schema.columns
+    WHERE table_name = 'table1'
+);
+
+------------------------------------------------------------------------------
+How to call a display method from form level to table level.
+1.Create one more display method in form datasource level and pass the table buffer as parameter to the display method.
+2.Use that parameter to the call the display method present in table level.
+------------------------------------------------------------------------------
+What Happens if we call info method for printing a string(Call sequence)
+When Info method is called it navigates to Global class and info method
+is called.From that place it goes to add method of Info class.
+------------------------------------------------------------------------------
+Keyboard shortcuts for build solution and project in Visual Studio
+Alt + B, B -> Build Solution
+Alt + B, R -> Rebuild Solution
+Alt + B, U -> Build current project
+Alt + B, E -> Rebuild current project
+------------------------------------------------------------------------------
+How to increase hover size.
+1.Go to Tools->Options->Fonts and Sizes->Statement completion.
+2.Go to Tools->Options->Fonts and Sizes->Data Tips.
+	

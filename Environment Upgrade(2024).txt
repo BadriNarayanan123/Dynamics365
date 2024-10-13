@@ -1,0 +1,10 @@
+How to environment update for local VM.
+
+1.Go to LCS->shared asset library->software deployable package->Download latest preview upgrade package
+2.Unzip the folder to a particular local folder and give it the name of latest environment upgrade version number
+3.Go to Cmd(Adminstrator) and navigate to the local folder where the package is unzipped.
+4.Execute these commands after stopping AOS service,batch,closing visual studio and d365 instances.
+
+1.AXUpdateInstaller.exe generate -runbookid="OneBoxDev" -topologyfile="DefaultTopologyData.xml" -servicemodelfile="DefaultServiceModelData.xml" -runbookfile="OneBoxDev-runbook.xml"
+2.AXUpdateInstaller.exe import -runbookfile=OneBoxDev-runbook.xml
+3.AXUpdateInstaller.exe execute -runbookid=OneBoxDev

@@ -1,0 +1,13 @@
+--How to Link Azure Devops to LCS
+1.Go to dev.azure.com
+2.Create an organisation -> create a project.
+3.Repos and pipelines will be initally empty in the project
+4.Make sure to give version control as team foundation server and not GIT
+5.Generate a token in Azure Devops and then go to LCS project settings and link the LCS project
+  with Devops Project.
+  
+
+--Creating environment in LCS
+1.You can go to LCS and click on '+' button to create an environment(Build or Dev environment).
+2.We can create Agent Pools Under Devops -> Project settings -> Pipelines -> Agent Pools
+3.Select Environment Type E4 V3
